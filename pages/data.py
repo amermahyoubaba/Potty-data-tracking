@@ -18,6 +18,7 @@ def app():
     #     width=100,
     # )
 
+    st.experimental_singleton.clear()
     r = re.compile('\d{2}:\d{2}')
 
     def check_time(time):
