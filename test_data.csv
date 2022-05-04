@@ -1,0 +1,12 @@
+,client,date,start_time,end_time,urinate_toilet,bowel_movement,mand,pants_down,pants_up,flush,time_interval
+0,AMMA,2022-04-05,11:26,11:31,Independent,Independent,Independent,Independent,Independent,Independent,30
+1,AMMA,2022-04-05,11:45,11:50,Independent,Independent,Independent,Independent,Independent,Independent,30
+2,AMMA,2022-04-05,11:55,12:00,Independent,Independent,Independent,Independent,Independent,Independent,35
+3,MARO,2022-04-06,12:25,12:30,Independent,Independent,Independent,Independent,Independent,Independent,45
+4,MARO,2022-04-06,12:15,12:20,None,None,No,No,No,No,45
+5,ERER,2022-04-07,12:32,12:37,Accident,Accident,Prompted,Prompted,Prompted,Prompted,40
+6,ERER,2022-05-04,11:34,11:39,Accident,Accident,Independent,Independent,Independent,Prompted,40
+7,ERER,2022-05-04,11:34,11:39,Accident,Accident,Independent,Independent,Independent,Prompted,40
+8,ERER,2022-05-04,11:34,11:39,Accident,Accident,Independent,Independent,Independent,Prompted,40
+9,AMMA,2022-05-04,13:27,13:32,Accident,Accident,Independent,Independent,Independent,Prompted,40
+10,AMMA,2022-05-04,13:38,13:43,None,None,No,No,No,No,40
