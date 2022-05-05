@@ -63,10 +63,10 @@ def app():
         "Urinate in toilet", ('None', 'Independent', 'Accident'))
     bowel = st.sidebar.radio("Bowel movement in toilet",
                              ('None', 'Independent', 'Accident'))
-    mand = st.sidebar.radio("Mand", ['Independent', 'Prompted', 'No'])
-    pdown = st.sidebar.radio("Pants down", ['Independent', 'Prompted', 'No'])
-    pup = st.sidebar.radio("Pants up", ['Independent', 'Prompted', 'No'])
-    flush = st.sidebar.radio("Flush toilet", ['Independent', 'Prompted', 'No'])
+    mand = st.sidebar.radio("Mand", ['No', 'Independent', 'Prompted'])
+    pdown = st.sidebar.radio("Pants down", ['No', 'Independent', 'Prompted'])
+    pup = st.sidebar.radio("Pants up", ['No', 'Independent', 'Prompted'])
+    flush = st.sidebar.radio("Flush toilet", ['No', 'Independent', 'Prompted'])
 
     st.markdown("#### Current Data Tracking!")
 
