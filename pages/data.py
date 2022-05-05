@@ -60,9 +60,9 @@ def app():
     check_time(end_time)
 
     urinate = st.sidebar.radio(
-        "Urinate in toilet", ('None', 'Independent', 'Accident'))
+        "Urinate in toilet", ('None', 'Success', 'Accident'))
     bowel = st.sidebar.radio("Bowel movement in toilet",
-                             ('None', 'Independent', 'Accident'))
+                             ('None', 'Success', 'Accident'))
     mand = st.sidebar.radio("Mand", ['No', 'Independent', 'Prompted'])
     pdown = st.sidebar.radio("Pants down", ['No', 'Independent', 'Prompted'])
     pup = st.sidebar.radio("Pants up", ['No', 'Independent', 'Prompted'])
