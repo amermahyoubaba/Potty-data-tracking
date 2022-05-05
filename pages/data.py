@@ -43,15 +43,15 @@ def app():
     @st.experimental_singleton
     def get_date():
         now = dt.now()
+        prev_time = (now - timedelta(minutes=5)).strftime("%H:%M")
         current_time = now.strftime("%H:%M")
-        later_time = (now + timedelta(minutes=5)).strftime("%H:%M")
-        return now, current_time, later_time
+        return now, prev_time, current_time
 
-    now, current_time, later_time = get_date()
+    now, prev_time, current_time = get_date()
 
     date = st.sidebar.date_input('Date:', now)
-    start_time = st.sidebar.text_input("Potty start time:", current_time)
-    end_time = st.sidebar.text_input("Potty end time:", later_time)
+    start_time = st.sidebar.text_input("Potty start time:", prev_time)
+    end_time = st.sidebar.text_input("Potty end time:", current_time)
 
     if date.strftime("%y/%m/%d") != now.strftime("%y/%m/%d"):
         st.warning('Warning: please check if the date is accurate')

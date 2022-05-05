@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime as dt
-from datetime import timedelta
+import datetime
 from pages.helper_functions import pie_chart, clean_data
 
 
@@ -11,6 +11,18 @@ def app():
 
     df = pd.read_csv('test_data.csv')
     df = clean_data(df)
+
+    today = datetime.date.today()
+    tomorrow = today + datetime.timedelta(days=1)
+
+    start_date, end_date = st.sidebar.date_input(
+        'start date  - end date :', [])
+
+    if start_date < end_date:
+        st.success('Start date: `%s`\n\nEnd date:`%s`' %
+                   (start_date, end_date))
+    else:
+        st.error('Error: End date must fall after start date.')
 
     clients = df["client"].unique()
     client_picked = st.selectbox('Pick a client', clients)
