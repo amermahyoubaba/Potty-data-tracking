@@ -4,6 +4,8 @@ from annotated_text import annotated_text
 import pandas as pd
 from datetime import datetime as dt
 from datetime import timedelta
+from pages.helper_functions import color_map, success_streak, time_interval
+from htbuilder import div, styles, classes, fonts
 import time
 import random
 # from PIL import Image
@@ -18,7 +20,6 @@ def app():
     #     width=100,
     # )
 
-    st.experimental_singleton.clear()
     r = re.compile('\d{2}:\d{2}')
 
     def check_time(time):
@@ -63,10 +64,11 @@ def app():
         "Urinate in toilet", ('None', 'Success', 'Accident'))
     bowel = st.sidebar.radio("Bowel movement in toilet",
                              ('None', 'Success', 'Accident'))
-    mand = st.sidebar.radio("Mand", ['No', 'Independent', 'Prompted'])
-    pdown = st.sidebar.radio("Pants down", ['No', 'Independent', 'Prompted'])
-    pup = st.sidebar.radio("Pants up", ['No', 'Independent', 'Prompted'])
-    flush = st.sidebar.radio("Flush toilet", ['No', 'Independent', 'Prompted'])
+    mand = st.sidebar.radio("Mand", ['None', 'Independent', 'Prompted'])
+    pdown = st.sidebar.radio("Pants down", ['None', 'Independent', 'Prompted'])
+    pup = st.sidebar.radio("Pants up", ['None', 'Independent', 'Prompted'])
+    flush = st.sidebar.radio(
+        "Flush toilet", ['None', 'Independent', 'Prompted'])
 
     st.markdown("#### Current Data Tracking!")
 
@@ -74,30 +76,58 @@ def app():
     client_picked = st.selectbox('Pick a client', clients)
     picked_df = df[df["client"] == client_picked]
 
-    st.markdown(
-        f"Current potty interval time: **{ picked_df.iloc[-1].time_interval } minutes**!!")
+    st.info(
+        f"""Current potty interval time: **{ picked_df.iloc[-1].time_interval } minutes**!
+         Potty success streak: **{ picked_df.iloc[-1].success_streak }**!
+        \n Tracking for client: **{client_picked}**""")
+
+    metric1, metric2 = st.columns(2)
+
+    interval_diff = picked_df.iloc[-1].time_interval - \
+        picked_df.iloc[-2].time_interval
+    metric1.metric(
+        "Current Time Interval", picked_df.iloc[-1].time_interval, int(interval_diff))
+
+    metric2.metric(
+        "Current Success Streak", picked_df.iloc[-1].success_streak, int(picked_df.iloc[-2].success_streak))
+
     if start_time < end_time:
         st.info(f'Tracking Time Interval:  { start_time } - { end_time }')
     else:
         st.error('Error: End time must fall after start time.')
 
     annotated_text(
-        ("Urinate in toilet", urinate),
-        ("Bowel movement in toilet", bowel),
-        ("Manded to go potty", mand),
-        ("Pants down", pdown),
-        ("Pants up", pup),
-        ("Flushed toilet", flush)
+        ("Urinate in toilet", urinate, color_map(urinate)),
+        ("Bowel movement in toilet", bowel, color_map(bowel)),
+        ("Manded to go potty", mand, color_map(mand)),
+        ("Pants down", pdown, color_map(pdown)),
+        ("Pants up", pup, color_map(pup)),
+        ("Flushed toilet", flush, color_map(flush)),
     )
     st.text('\n')
 
-    if st.button("View Client's Data"):
+    col1, col2, col3 = st.columns(3)
+
+    if col1.button("View Client's Data"):
         st.dataframe(picked_df)
+
+    if col2.button("Clear Cache!"):
+        st.experimental_singleton.clear()
+
+    col3.download_button(
+        label="Download data as CSV",
+        data=picked_df.to_csv(),
+        file_name=f'{client_picked}_potty_data.csv',
+        mime='text/csv',
+    )
+
+    streak = success_streak(picked_df, bowel)
+    interval = time_interval(picked_df, streak)
 
     data = {'client': client_picked, 'date': date, 'start_time': start_time,
             'end_time': end_time, 'urinate_toilet': urinate, 'bowel_movement': bowel,
             'pants_down': pdown, 'pants_up': pup, 'mand': mand, 'flush': flush,
-            'time_interval': 40}
+            'time_interval': interval, 'success_streak': streak}
 
     if st.sidebar.button("Track"):
 

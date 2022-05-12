@@ -4,14 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-streamlit = "*"
 pandas = "*"
-numpy = "*"
+streamlit = "*"
 plotly = "*"
-streamlit-aggrid = "*"
 st-annotated-text = "*"
+htbuilder = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.9"
+python_version = "3.7"

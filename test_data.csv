@@ -1,12 +1,14 @@
-,client,date,start_time,end_time,urinate_toilet,bowel_movement,mand,pants_down,pants_up,flush,time_interval
-0,AMMA,2022-04-05,11:26,11:31,Success,Success,Independent,Independent,Independent,Independent,30
-1,AMMA,2022-04-05,11:45,11:50,Success,Success,Independent,Independent,Independent,Independent,30
-2,AMMA,2022-04-05,11:55,12:00,Success,Success,Independent,Independent,Independent,Independent,35
-3,MARO,2022-04-06,12:25,12:30,Success,Success,Independent,Independent,Independent,Independent,45
-4,MARO,2022-04-06,12:15,12:20,None,None,No,No,No,No,45
-5,ERER,2022-04-07,12:32,12:37,Accident,Accident,Prompted,Prompted,Prompted,Prompted,40
-6,ERER,2022-05-04,11:34,11:39,Accident,Accident,Independent,Independent,Independent,Prompted,40
-7,ERER,2022-05-04,11:34,11:39,Accident,Accident,Independent,Independent,Independent,Prompted,40
-8,ERER,2022-05-04,11:34,11:39,Accident,Accident,Independent,Independent,Independent,Prompted,40
-9,AMMA,2022-05-04,13:27,13:32,Accident,Accident,Independent,Independent,Independent,Prompted,40
-10,AMMA,2022-05-04,13:38,13:43,None,None,No,No,No,No,40
+,client,date,start_time,end_time,urinate_toilet,bowel_movement,mand,pants_down,pants_up,flush,time_interval,success_streak
+0,AMMA,2022-04-05,11:26,11:31,Success,Success,Independent,Independent,Independent,Independent,30, 0
+1,AMMA,2022-04-05,11:45,11:50,Success,Success,Independent,Independent,Independent,Independent,30, 0
+2,AMMA,2022-04-05,11:55,12:00,Success,Success,Independent,Independent,Independent,Independent,35, 0
+3,MARO,2022-04-06,12:25,12:30,Success,Success,Independent,Independent,Independent,Independent,45, 0
+4,MARO,2022-04-06,12:15,12:20,None,None,None,None,None,None,45, 0
+5,ERER,2022-04-07,12:32,12:37,Accident,Accident,Prompted,Prompted,Prompted,Prompted,40, 0
+6,ERER,2022-05-04,11:34,11:39,Accident,Accident,Independent,Independent,Independent,Prompted,40, 0
+7,ERER,2022-05-04,11:34,11:39,Accident,Accident,Independent,Independent,Independent,Prompted,40, 0
+8,ERER,2022-05-04,11:34,11:39,Accident,Accident,Independent,Independent,Independent,Prompted,40, 0
+9,AMMA,2022-05-04,13:27,13:32,Accident,Accident,Independent,Independent,Independent,Prompted,40, 0
+10,AMMA,2022-05-04,13:38,13:43,None,None,None,None,None,None,40, 0
+11,AMMA,2022-05-12,10:54,10:59,Success,Success,Independent,Prompted,Prompted,Independent,40, 0
+12,AMMA,2022-05-12,11:54,11:59,Success,Success,Independent,Prompted,Prompted,Independent,45, 0
